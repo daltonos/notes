@@ -29,11 +29,11 @@ class Board extends Component {
 	add(text) {
 		this.setState(prevState => ({
 			notes: [
-				...prevState.notes,
 				{
 					id: this.nextId(),
 					note: text
-				}
+				},
+				...prevState.notes
 			]
 		}))
 	}
