@@ -20,7 +20,7 @@ div.board {
 
 div.note {
     height: 150px;
-    width: 150px;
+    width: 300px;
     background-color: yellow;
     margin: 2px 0;
     position: relative;
@@ -29,6 +29,7 @@ div.note {
     -webkit-box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
     box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
     margin: 8px;
+    overflow: hidden;
 }
 
 div.note:active {

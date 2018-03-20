@@ -17,8 +17,8 @@ class Note extends Component {
 		this.randomBetween = this.randomBetween.bind(this)
 	}
 
-	componentWillMount() {
-
+	componentDidMount() {
+		this.edit()
 	}
 
 	randomBetween(x, y, s) {

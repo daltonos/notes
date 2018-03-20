@@ -13,17 +13,24 @@ class Board extends Component {
 		this.update = this.update.bind(this)
 		this.remove = this.remove.bind(this)
 		this.nextId = this.nextId.bind(this)
+		this.onPaste = function(e) {
+			console.log(e.clipboardData.getData('Text'));
+		}
 	}
 
 	componentWillMount() {
 		var self = this
+		/*
 		if(this.props.count) {
 			fetch(`https://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`)
 				.then(response => response.json())
 				.then(json => json[0]
 								.split('. ')
 								.forEach(sentence => self.add(sentence.substring(0, 25))))
-		}
+		}*/
+		this.setState({
+			notes: []
+		})
 	}
 
 	add(text) {
@@ -70,11 +77,17 @@ class Board extends Component {
 		)
 	}
 
+	pasteContent(content){
+		if(!this.state.notes.filter(note => note.state.editing)){
+			this.add(content)
+		}
+	}
+	
 	render() {
 		return (
-			<div className="board">
+			<div className="board" onPaste={content => this.pasteContent(content.clipboardData.getData('text'))}>
 				<div className="toolbar">
-					<button onClick={this.add.bind(null, "New Note")} id="add">
+					<button onClick={this.add.bind(null, null)} id="add">
 						<FaPlus />
 					</button>
 				</div>
